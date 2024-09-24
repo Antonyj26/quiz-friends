@@ -1,30 +1,44 @@
-import { useState } from 'react'
 import './App.css'
-import { Buttons } from './Button/ButtonComponent'
+import { Home } from './components/Home'
+import { Layout } from './components/Layout'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <Layout>
+        <Home />
+      </Layout>
+    ),
+  },
+  {
+    path: '/about',
+    element: (
+      <Layout>
+        <div>Sobre</div>
+      </Layout>
+    ),
+  },
+  {
+    path: '/contact',
+    element: <div>Contato</div>,
+  },
+  {
+    path: '/quiz',
+    element: <div>Quiz</div>,
+  },
+  {
+    path: '/create-quiz',
+    element: <div>Cria Quiz</div>,
+  },
+])
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home')
-
   return (
-    <>
-      {currentPage === 'home' && (
-        <div className="p1">
-          <h1>Ola mundo</h1>
-          <Buttons setPage={setCurrentPage} />
-        </div>
-      )}
-
-      {currentPage === 'quiz' && (
-        <div className="p2">
-          <h1>Quiz</h1>
-          <Buttons setPage={setCurrentPage} />
-
-          <div className="inp">
-            <input />
-          </div>
-        </div>
-      )}
-    </>
+    <div className="root-container">
+      <RouterProvider router={router} />
+    </div>
   )
 }
 

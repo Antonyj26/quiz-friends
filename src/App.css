@@ -1,12 +1,14 @@
 #root {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
 }
 
-.butn {
+.root-container {
   display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
+  width: 100%;
+  flex-direction: column;
+  background-color: #232438;
 }

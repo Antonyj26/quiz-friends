@@ -1,0 +1,33 @@
+.Layout-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Layout-container main {
+  padding-left: 20px;
+}
+
+.Layout-container main section {
+  display: flex;
+  gap: 10px;
+}
+
+.content-container {
+  display: flex;
+  width: 100%;
+}
+
+.side-content {
+  min-width: 300px;
+  border: 2px solid blue;
+  min-height: 600px;
+}
+
+.bottom-content {
+  display: flex;
+  width: 100%;
+  border: 2px solid red;
+  min-height: 100px;
+  margin: 20px 0px;
+  box-sizing: border-box;
+}
