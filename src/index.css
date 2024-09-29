@@ -11,6 +11,15 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Variáveis de cor task-004 */
+
+  --bg-color-primary: #4a4a65;
+  --bg-color-secondary: #6b6999;
+  --bg-color-input: #4a4a65;
+  --text--color-primary: #fff;
+  --text-color-input: #e4dede;
+  --text-color-highlight: #be09eb;
 }
 
 a {
