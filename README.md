@@ -9,6 +9,13 @@ Currently, two official plugins are available:
 
 ## Como rodar o projeto
 
+
 Execute o comando `npm run dev`
 
 Para criar novos componentes execute o comando `npm run plop`
+
+Execute o comando npm run dev
+
+### Telas
+https://www.tldraw.com/r/PNA4yWtPI-vvPMX0Y9qVQ?d=v-345.12.3455.1627.page
+
