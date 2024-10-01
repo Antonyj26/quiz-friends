@@ -1,6 +1,7 @@
 import './App.css'
 import { Home } from './components/Home'
 import { Layout } from './components/Layout'
+import { About } from './components/About'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     path: '/about',
     element: (
       <Layout>
-        <div>Sobre</div>
+        <About />
       </Layout>
     ),
   },
