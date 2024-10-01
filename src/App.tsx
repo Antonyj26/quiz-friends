@@ -2,6 +2,9 @@ import './App.css'
 import { Home } from './components/Home'
 import { Layout } from './components/Layout'
 import { About } from './components/About'
+import { Contact } from './components/Contact'
+import { Quiz } from './components/Quiz'
+import { CreateQuiz } from './components/CreateQuiz'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -23,15 +26,27 @@ const router = createBrowserRouter([
   },
   {
     path: '/contact',
-    element: <div>Contato</div>,
+    element: (
+      <Layout>
+        <Contact />
+      </Layout>
+    ),
   },
   {
     path: '/quiz',
-    element: <div>Quiz</div>,
+    element: (
+      <Layout>
+        <Quiz />
+      </Layout>
+    ),
   },
   {
     path: '/create-quiz',
-    element: <div>Cria Quiz</div>,
+    element: (
+      <Layout>
+        <CreateQuiz />
+      </Layout>
+    ),
   },
 ])
 
