@@ -1,0 +1,14 @@
+.Header-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+}
+
+.Header-container a {
+  color: var(--text--color-primary);
+}
+
+.Header-container a.active {
+  color: var(--text-color-highlight);
+}
