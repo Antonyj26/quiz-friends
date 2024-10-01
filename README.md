@@ -9,4 +9,6 @@ Currently, two official plugins are available:
 
 ## Como rodar o projeto
 
-Execute o comando npm run dev
+Execute o comando `npm run dev`
+
+Para criar novos componentes execute o comando `npm run plop`
