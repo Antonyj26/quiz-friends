@@ -1,11 +1,23 @@
 .Header-container {
   display: flex;
   width: 100%;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 60px;
+  padding: 20px 0px 40px;
+  background-color: var(--bg-color-primary);
+}
+
+.Header-container h1 {
+  color: var(--text-color-highlight);
+  font-family: 'Leckerli One', cursive;
+  font-size: 40px;
+  margin-right: 120px;
 }
 
 .Header-container a {
+  font-size: 19px;
+  font-family: 'Baloo 2', sans-serif;
   color: var(--text--color-primary);
 }
 
