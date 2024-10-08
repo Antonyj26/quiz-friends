@@ -1,0 +1,19 @@
+.Button-container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  background-color: var(--text-color-highlight);
+  border: none;
+  outline: 0;
+  box-shadow: 1px 6px 8px 5px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+
+  &.secondary {
+    background-color: var(--text-color-highlight-secondary);
+  }
+}
+
+.Button-container:hover {
+  filter: brightness(0.9);
+  transition: filter 0.5s ease-in-out;
+}

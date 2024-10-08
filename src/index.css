@@ -19,7 +19,8 @@
   --bg-color-input: #4a4a65;
   --text--color-primary: #fff;
   --text-color-input: #e4dede;
-  --text-color-highlight: #be09eb;
+  --text-color-highlight: #915cb6;
+  --text-color-highlight-secondary: #ff8b66;
 }
 
 a {
@@ -58,10 +59,6 @@ button {
 }
 button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
