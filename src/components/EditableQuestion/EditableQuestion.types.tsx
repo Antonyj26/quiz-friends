@@ -1,3 +1,9 @@
+type Option = {
+  title: string
+  isValidAnswer: boolean
+}
+
 export interface EditableQuestionProps {
-  value?: string
+  index: number
+  options: Option[]
 }

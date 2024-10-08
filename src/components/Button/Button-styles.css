@@ -17,3 +17,8 @@
   filter: brightness(0.9);
   transition: filter 0.5s ease-in-out;
 }
+
+.Button-container[disabled] {
+  background-color: var(--text-color-input);
+  color: var(--bg-color-secondary);
+}
