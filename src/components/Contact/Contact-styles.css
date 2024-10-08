@@ -1,3 +1,45 @@
 .Contact-container {
   display: flex;
+  flex-direction: column;
+
+  fieldset {
+    border: none;
+  }
+
+  label {
+    font-size: 19px;
+  }
+
+  input {
+    width: 800px;
+    appearance: none;
+    padding: 16px;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    background-color: var(--bg-color-primary);
+    border: none;
+  }
+
+  textarea {
+    border: none;
+    margin-top: 5px;
+    width: 800px;
+    appearance: none;
+    resize: none;
+
+    padding: 16px;
+    background-color: var(--bg-color-primary);
+    height: 200px;
+  }
+
+  ::placeholder {
+    color: white;
+    font-family: 'Baloo 2', sans-serif;
+  }
+}
+
+.subject-wrapper,
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
 }
