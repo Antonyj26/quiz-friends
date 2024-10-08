@@ -18,6 +18,7 @@ export function Header() {
 
   return (
     <header className="Header-container">
+      <h1>Quiz Friends</h1>
       {headerLinks.map((headerLink, index) => (
         <a
           key={index}
