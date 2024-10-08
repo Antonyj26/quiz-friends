@@ -1,30 +1,21 @@
 import type { EditableQuestionProps } from './EditableQuestion.types'
 import './EditableQuestion-styles.css'
 
-export function EditableQuestion({ value }: EditableQuestionProps) {
+export function EditableQuestion({ index, options }: EditableQuestionProps) {
   return (
     <div className="EditableQuestion-container">
-      <p>Pergunta 01</p>
+      <p>Pergunta {index + 1}:</p>
+      <input type="input"></input>
       <div className="options-list">
-        <div className="option">
-          <span>Opção 1</span>
-          <input type="checkbox"></input>
-        </div>
-
-        <div className="option">
-          <span>Opção 2</span>
-          <input type="checkbox"></input>
-        </div>
-
-        <div className="option">
-          <span>Opção 3</span>
-          <input type="checkbox"></input>
-        </div>
-
-        <div className="option">
-          <span>Opção 4</span>
-          <input type="checkbox"></input>
-        </div>
+        {options.map((option, index) => {
+          return (
+            <div className="option" key={index + '-' + option.title}>
+              <span>Opção {index + 1}:</span>
+              <input type="input"></input>
+              <input type="checkbox"></input>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

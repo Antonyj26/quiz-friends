@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { EditableQuestion } from '../EditableQuestion'
+import { Button } from '../Button'
 import './CreateQuiz-styles.css'
 
 export function CreateQuiz() {
@@ -26,18 +27,36 @@ export function CreateQuiz() {
       <h1>Criar Quiz</h1>
 
       <div className="question-list">
-        {Array.from({ length: questions }, (_, i) => i).map(() => (
-          <EditableQuestion />
+        {Array.from({ length: questions }, (_, i) => i).map((_, i) => (
+          <EditableQuestion
+            key={i}
+            index={i + 1}
+            options={[
+              { title: 'Opção 1', isValidAnswer: true },
+              { title: 'Opção 1', isValidAnswer: false },
+              { title: 'Opção 1', isValidAnswer: false },
+              { title: 'Opção 1', isValidAnswer: false },
+            ]}
+          />
         ))}
       </div>
 
       <div>
-        <button onClick={handleAddQuestion} disabled={questions > 9}>
-          Adicionar Pergunta
-        </button>
-        <button onClick={handleRemoveQuestion} disabled={questions === 0}>
-          Remover Pergunta
-        </button>
+        <Button
+          text="Adicionar Pergunta"
+          action={handleAddQuestion}
+          disabled={questions > 9}
+          variant="secondary"
+          minWidth="200px"
+        />
+
+        <Button
+          text="Remover Pergunta"
+          action={handleRemoveQuestion}
+          disabled={questions === 0}
+          variant="primary"
+          minWidth="200px"
+        />
       </div>
     </div>
   )
