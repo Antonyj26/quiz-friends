@@ -22,5 +22,5 @@
 }
 
 .Header-container a.active {
-  color: var(--text-color-highlight);
+  color: var(--text-color-highlight-secondary);
 }
