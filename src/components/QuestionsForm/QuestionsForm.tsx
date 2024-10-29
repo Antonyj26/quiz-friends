@@ -57,7 +57,7 @@ export function QuestionsForm() {
         {Array.from({ length: questions }, (_, i) => i).map(
           (_, questionIndex) => (
             <fieldset key={questionIndex}>
-              <legend>Question 1</legend>
+              <legend>Question {questionIndex + 1}</legend>
               <label htmlFor={`question${questionIndex + 1}`}>
                 Question Text:
               </label>
