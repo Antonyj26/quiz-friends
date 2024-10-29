@@ -1,4 +1,5 @@
 import './Contact-styles.css'
+import { Button } from '../Button'
 
 export function Contact() {
   return (
@@ -18,6 +19,7 @@ export function Contact() {
             <textarea placeholder="Digite aqui sua mensagem" />
           </label>
         </fieldset>
+        <Button text="Enviar" />
       </form>
     </div>
   )
