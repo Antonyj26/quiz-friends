@@ -4,8 +4,8 @@ import { Layout } from './components/Layout'
 import { About } from './components/About'
 import { Contact } from './components/Contact'
 import { Quiz } from './components/Quiz'
-import { CreateQuiz } from './components/CreateQuiz'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { QuestionsForm } from './components/QuestionsForm'
 
 const router = createBrowserRouter([
   {
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
     path: '/create-quiz',
     element: (
       <Layout>
-        <CreateQuiz />
+        <QuestionsForm />
       </Layout>
     ),
   },
