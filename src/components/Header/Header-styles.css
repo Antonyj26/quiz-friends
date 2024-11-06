@@ -19,6 +19,7 @@
   font-size: 19px;
   font-family: 'Baloo 2', sans-serif;
   color: var(--text--color-primary);
+  text-transform: uppercase;
 }
 
 .Header-container a.active {
