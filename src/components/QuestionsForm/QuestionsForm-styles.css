@@ -1,3 +1,64 @@
 .QuestionsForm-container {
   display: flex;
+  gap: 30px;
+  width: 940px;
+  text-transform: uppercase;
+
+  form {
+    width: 650px;
+
+    margin-top: 10px;
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border: none;
+      background-color: var(--bg-color-primary);
+      margin-top: 20px;
+      border-radius: 20px;
+
+      legend {
+        text-align: center;
+      }
+    }
+
+    input[type='text'] {
+      width: 90%;
+      height: 40px;
+
+      border: none;
+      border-radius: 5px;
+      padding-left: 10px;
+      background-color: #1c1d2f;
+    }
+
+    input[type='radio'] {
+      margin-left: 20px;
+      background-color: #1c1d2f;
+    }
+
+    button {
+      width: 50%;
+      margin: 30px 150px;
+      text-transform: uppercase;
+
+      background-color: var(--text-color-highlight-secondary);
+    }
+
+    button:hover {
+      background-color: #915cb6;
+    }
+  }
+}
+
+.Button-content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-top: 50px;
+
+  button {
+    height: 80px;
+  }
 }

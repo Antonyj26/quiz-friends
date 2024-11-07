@@ -66,15 +66,16 @@ export function QuestionsForm() {
                 id={`question${questionIndex + 1}`}
                 name={`question${questionIndex + 1}`}
                 required
+                placeholder="Add your question text"
               />
               <br />
-
+              <span>Marque a opção correta</span>
               {Array.from({ length: 4 }).map((_, optionIndex) => (
                 <div key={`${questionIndex}-${optionIndex}`}>
                   <input
                     type="text"
                     name={`question${questionIndex + 1}-option${optionIndex + 1}`}
-                    placeholder={`Option ${questionIndex + 1}`}
+                    placeholder={`Option ${optionIndex + 1}`}
                     required
                   />
                   <input
@@ -91,10 +92,10 @@ export function QuestionsForm() {
           )
         )}
 
-        <button type="submit">Salvar</button>
+        <Button text="Salvar" type="submit" />
       </form>
 
-      <div>
+      <div className="Button-content">
         <Button
           text="Adicionar Pergunta"
           action={handleAddQuestion}
