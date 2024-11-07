@@ -1,3 +1,5 @@
+import type { QuestionList } from '../QuestionsForm/QuestionsForm.types'
+
 export interface QuizProps {
-  value?: string
+  quizData: QuestionList[]
 }
