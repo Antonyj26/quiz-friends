@@ -58,16 +58,18 @@ export function QuestionsForm() {
           (_, questionIndex) => (
             <fieldset key={questionIndex}>
               <legend>Question {questionIndex + 1}</legend>
-              <label htmlFor={`question${questionIndex + 1}`}>
-                Question Text:
-              </label>
-              <input
-                type="text"
-                id={`question${questionIndex + 1}`}
-                name={`question${questionIndex + 1}`}
-                required
-                placeholder="Add your question text"
-              />
+              <div>
+                <label htmlFor={`question${questionIndex + 1}`}>
+                  Texto da questão:
+                </label>
+                <input
+                  type="text"
+                  id={`question${questionIndex + 1}`}
+                  name={`question${questionIndex + 1}`}
+                  required
+                  placeholder="Adicione sua questão"
+                />
+              </div>
               <br />
               <span>Marque a opção correta</span>
               {Array.from({ length: 4 }).map((_, optionIndex) => (
@@ -75,7 +77,7 @@ export function QuestionsForm() {
                   <input
                     type="text"
                     name={`question${questionIndex + 1}-option${optionIndex + 1}`}
-                    placeholder={`Option ${optionIndex + 1}`}
+                    placeholder={`Opção ${optionIndex + 1}`}
                     required
                   />
                   <input
@@ -85,16 +87,18 @@ export function QuestionsForm() {
                     required
                   />
                   <br />
-                  <span>Correct</span>
                 </div>
               ))}
             </fieldset>
           )
         )}
-
-        <Button text="Salvar" type="submit" />
+        <Button
+          className="Button-submit
+        "
+          text="Salvar"
+          type="submit"
+        />
       </form>
-
       <div className="Button-content">
         <Button
           text="Adicionar Pergunta"
