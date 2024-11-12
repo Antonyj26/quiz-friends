@@ -2,6 +2,7 @@ import { FormEvent, useState, useCallback } from 'react'
 import { Button } from '../Button'
 import type { QuestionList } from './QuestionsForm.types'
 import './QuestionsForm-styles.css'
+import { encodeJsonToBase64 } from '../../helpers/encodeJsonToBase64'
 
 export function QuestionsForm() {
   const [questions, setQuestions] = useState(0)
@@ -23,7 +24,7 @@ export function QuestionsForm() {
   }
 
   const handleSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
 
       const formData = e.currentTarget
@@ -47,6 +48,24 @@ export function QuestionsForm() {
           options: [option1, option2, option3, option4],
         })
       }
+
+      const questionListBase64 = encodeJsonToBase64(questionList)
+
+      const urlHost = 'https://www.google.com'
+      const urlBuilder = new URL(urlHost)
+      urlBuilder.searchParams.set('quiz', questionListBase64)
+      const url = urlBuilder.toString()
+      const body = { url }
+
+      const result = await fetch('https://api.encurtador.dev/encurtamentos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      })
+
+      console.log('DBG:', { result })
     },
     [questions]
   )
