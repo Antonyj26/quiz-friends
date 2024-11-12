@@ -10,9 +10,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={
-        'Button-container' + (variant == 'secondary' ? ' secondary' : '')
-      }
+      className={`Button-container ${variant}`}
       onClick={action}
       disabled={disabled}
       style={{ minWidth }}
