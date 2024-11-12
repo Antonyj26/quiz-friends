@@ -61,6 +61,7 @@ export function Quiz({ quizData }: QuizProps) {
           <br></br>
 
           <Button
+            variant="success"
             text="Responder"
             minWidth="100%"
             action={handleAnswerQuestion}
