@@ -1,10 +1,16 @@
 import { FormEvent, useState, useCallback } from 'react'
 import { Button } from '../Button'
+import { Base64 } from 'js-base64'
+import { encode } from 'base62'
+import { getLastDatabaseRegistryId } from './request/getLastDatabaseRegistryId'
 import type { QuestionList } from './QuestionsForm.types'
 import './QuestionsForm-styles.css'
+import { URL_ID_NUMBER_PADDING } from '../../constants'
+import { registryNewQuiz } from './request/registryNewQuiz'
 
 export function QuestionsForm() {
   const [questions, setQuestions] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   function handleAddQuestion() {
     if (questions > 9) {
@@ -23,8 +29,10 @@ export function QuestionsForm() {
   }
 
   const handleSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
+
+      setIsLoading(true)
 
       const formData = e.currentTarget
 
@@ -47,6 +55,30 @@ export function QuestionsForm() {
           options: [option1, option2, option3, option4],
         })
       }
+
+      const questionListJson = JSON.stringify(questionList)
+      const questionListBase64 = Base64.encode(questionListJson)
+
+      const lastRegistryId = await getLastDatabaseRegistryId()
+
+      if (lastRegistryId === null) {
+        alert('Algo de errado aconteceu') // [] TODO - Adicionar um Toast
+        setIsLoading(false)
+        return
+      }
+
+      const shortUrl = encode(lastRegistryId + URL_ID_NUMBER_PADDING)
+
+      const result = await registryNewQuiz(shortUrl, questionListBase64)
+
+      if (!result) {
+        alert('Não foi possivel adicionar um novo quiz') // [] TODO - Adicionar um Toast
+        setIsLoading(false)
+        return
+      }
+
+      alert('Quiz salvo com sucesso!') // [] TODO - Adicionar um Toast
+      setIsLoading(false)
     },
     [questions]
   )
@@ -104,9 +136,10 @@ export function QuestionsForm() {
           )
         )}
         <Button
-          className="Button-submit
-        "
           text="Salvar"
+          disabled={isLoading}
+          variant="success"
+          minWidth="200px"
           type="submit"
         />
       </form>
@@ -114,7 +147,7 @@ export function QuestionsForm() {
         <Button
           text="Adicionar Pergunta"
           action={handleAddQuestion}
-          disabled={questions > 9}
+          disabled={questions > 9 || isLoading}
           variant="secondary"
           minWidth="200px"
         />
@@ -122,7 +155,7 @@ export function QuestionsForm() {
         <Button
           text="Remover Pergunta"
           action={handleRemoveQuestion}
-          disabled={questions === 0}
+          disabled={questions === 0 || isLoading}
           variant="primary"
           minWidth="200px"
         />

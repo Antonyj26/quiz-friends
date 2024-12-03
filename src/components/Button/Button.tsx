@@ -16,6 +16,7 @@ export function Button({
       onClick={action}
       disabled={disabled}
       style={{ minWidth }}
+      {...rest}
     >
       {text}
     </button>
