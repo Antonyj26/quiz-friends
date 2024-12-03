@@ -11,6 +11,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
+      {...rest}
       className={`Button-container ${variant}`}
       onClick={action}
       disabled={disabled}
