@@ -7,6 +7,7 @@ export function Button({
   action,
   disabled,
   minWidth,
+  ...rest
 }: ButtonProps) {
   return (
     <button
@@ -14,6 +15,7 @@ export function Button({
       onClick={action}
       disabled={disabled}
       style={{ minWidth }}
+      {...rest}
     >
       {text}
     </button>
