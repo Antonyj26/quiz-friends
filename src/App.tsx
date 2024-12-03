@@ -3,7 +3,7 @@ import { Home } from './components/Home'
 import { Layout } from './components/Layout'
 import { About } from './components/About'
 import { Contact } from './components/Contact'
-import { Quiz } from './components/Quiz'
+import { QuizPage } from './components/QuizPage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { QuestionsForm } from './components/QuestionsForm'
 
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     path: '/quiz',
     element: (
       <Layout>
-        <Quiz />
+        <QuizPage />
       </Layout>
     ),
   },

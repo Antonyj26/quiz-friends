@@ -1,3 +1,9 @@
 .Quiz-container {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.QuizPage-container {
+  margin-left: 150px;
 }

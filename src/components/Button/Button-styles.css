@@ -11,6 +11,11 @@
   &.secondary {
     background-color: var(--text-color-highlight-secondary);
   }
+
+  &.success {
+    background-color: var(--text-color-success);
+    color: black;
+  }
 }
 
 .Button-container:hover {
