@@ -57,44 +57,60 @@ export function QuestionsForm() {
         {Array.from({ length: questions }, (_, i) => i).map(
           (_, questionIndex) => (
             <fieldset key={questionIndex}>
-              <legend>Question {questionIndex + 1}</legend>
-              <label htmlFor={`question${questionIndex + 1}`}>
-                Question Text:
-              </label>
-              <input
-                type="text"
-                id={`question${questionIndex + 1}`}
-                name={`question${questionIndex + 1}`}
-                required
-              />
-              <br />
+              <legend>
+                <span className="text-legend">
+                  Question {questionIndex + 1}
+                </span>
+              </legend>
 
-              {Array.from({ length: 4 }).map((_, optionIndex) => (
-                <div key={`${questionIndex}-${optionIndex}`}>
-                  <input
-                    type="text"
-                    name={`question${questionIndex + 1}-option${optionIndex + 1}`}
-                    placeholder={`Option ${questionIndex + 1}`}
-                    required
-                  />
-                  <input
-                    type="radio"
-                    name={`question${questionIndex + 1}-correctOption${questionIndex + 1}`}
-                    value={optionIndex}
-                    required
-                  />
-                  <br />
-                  <span>Correct</span>
-                </div>
-              ))}
+              <div className="question-container">
+                <label htmlFor={`question${questionIndex + 1}`}>
+                  Texto da questão:
+                </label>
+                <textarea
+                  rows={8}
+                  id={`question${questionIndex + 1}`}
+                  name={`question${questionIndex + 1}`}
+                  required
+                  placeholder="Adicione sua questão"
+                />
+              </div>
+
+              <span>Marque a opção correta</span>
+              <div className="field-container">
+                {Array.from({ length: 4 }).map((_, optionIndex) => (
+                  <div
+                    className="input-container"
+                    key={`${questionIndex}-${optionIndex}`}
+                  >
+                    <input
+                      type="radio"
+                      name={`question${questionIndex + 1}-correctOption${questionIndex + 1}`}
+                      value={optionIndex}
+                      required
+                    />
+                    <input
+                      type="text"
+                      name={`question${questionIndex + 1}-option${optionIndex + 1}`}
+                      placeholder={`Opção ${optionIndex + 1}`}
+                      required
+                    />
+
+                    <br />
+                  </div>
+                ))}
+              </div>
             </fieldset>
           )
         )}
-
-        <button type="submit">Salvar</button>
+        <Button
+          className="Button-submit
+        "
+          text="Salvar"
+          type="submit"
+        />
       </form>
-
-      <div>
+      <div className="Button-content">
         <Button
           text="Adicionar Pergunta"
           action={handleAddQuestion}

@@ -7,9 +7,11 @@ export function Button({
   action,
   disabled,
   minWidth,
+  ...rest
 }: ButtonProps) {
   return (
     <button
+      {...rest}
       className={`Button-container ${variant}`}
       onClick={action}
       disabled={disabled}
