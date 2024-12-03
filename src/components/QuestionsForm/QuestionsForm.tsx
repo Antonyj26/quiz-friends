@@ -57,38 +57,49 @@ export function QuestionsForm() {
         {Array.from({ length: questions }, (_, i) => i).map(
           (_, questionIndex) => (
             <fieldset key={questionIndex}>
-              <legend>Question {questionIndex + 1}</legend>
-              <div>
+              <legend>
+                <span className="text-legend">
+                  Question {questionIndex + 1}
+                </span>
+              </legend>
+
+              <div className="question-container">
                 <label htmlFor={`question${questionIndex + 1}`}>
                   Texto da questão:
                 </label>
-                <input
-                  type="text"
+                <textarea
+                  rows={8}
                   id={`question${questionIndex + 1}`}
                   name={`question${questionIndex + 1}`}
                   required
                   placeholder="Adicione sua questão"
                 />
               </div>
-              <br />
+
               <span>Marque a opção correta</span>
-              {Array.from({ length: 4 }).map((_, optionIndex) => (
-                <div key={`${questionIndex}-${optionIndex}`}>
-                  <input
-                    type="text"
-                    name={`question${questionIndex + 1}-option${optionIndex + 1}`}
-                    placeholder={`Opção ${optionIndex + 1}`}
-                    required
-                  />
-                  <input
-                    type="radio"
-                    name={`question${questionIndex + 1}-correctOption${questionIndex + 1}`}
-                    value={optionIndex}
-                    required
-                  />
-                  <br />
-                </div>
-              ))}
+              <div className="field-container">
+                {Array.from({ length: 4 }).map((_, optionIndex) => (
+                  <div
+                    className="input-container"
+                    key={`${questionIndex}-${optionIndex}`}
+                  >
+                    <input
+                      type="radio"
+                      name={`question${questionIndex + 1}-correctOption${questionIndex + 1}`}
+                      value={optionIndex}
+                      required
+                    />
+                    <input
+                      type="text"
+                      name={`question${questionIndex + 1}-option${optionIndex + 1}`}
+                      placeholder={`Opção ${optionIndex + 1}`}
+                      required
+                    />
+
+                    <br />
+                  </div>
+                ))}
+              </div>
             </fieldset>
           )
         )}
