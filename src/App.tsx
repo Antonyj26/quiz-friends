@@ -6,6 +6,7 @@ import { Contact } from './components/Contact'
 import { QuizPage } from './components/QuizPage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { QuestionsForm } from './components/QuestionsForm'
+import { Toaster } from 'react-hot-toast'
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,7 @@ function App() {
   return (
     <div className="root-container">
       <RouterProvider router={router} />
+      <Toaster />
     </div>
   )
 }
