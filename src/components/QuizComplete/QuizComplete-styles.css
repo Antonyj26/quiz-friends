@@ -1,0 +1,13 @@
+.QuizComplete-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.QuizComplete-url {
+  text-decoration: underline;
+  color: var(--text-color-link);
+}
+
+.QuizComplete-url:hover {
+  cursor: pointer;
+}

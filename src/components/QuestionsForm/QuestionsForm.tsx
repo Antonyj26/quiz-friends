@@ -8,10 +8,13 @@ import './QuestionsForm-styles.css'
 import { URL_ID_NUMBER_PADDING } from '../../constants'
 import { registryNewQuiz } from './request/registryNewQuiz'
 import toast from 'react-hot-toast'
+import { QuizComplete } from '../QuizComplete'
 
 export function QuestionsForm() {
   const [questions, setQuestions] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [isQuizComplete, setIsQuizComplete] = useState(false)
+  const [quizShortUrl, setQuizShortUrl] = useState('')
 
   function handleAddQuestion() {
     if (questions > 9) {
@@ -62,7 +65,6 @@ export function QuestionsForm() {
 
       const lastRegistryId = await getLastDatabaseRegistryId()
 
-      // if (lastRegistryId === null) {
       if (lastRegistryId === null) {
         toast.error('Algo de errado aconteceu')
         setIsLoading(false)
@@ -81,87 +83,98 @@ export function QuestionsForm() {
 
       toast.success('Quiz salvo com sucesso!')
       setIsLoading(false)
+      setIsQuizComplete(true)
+      setQuizShortUrl(shortUrl)
     },
     [questions]
   )
+  console.log(window.location.origin)
 
   return (
     <div className="QuestionsForm-container">
-      <form onSubmit={handleSubmit}>
-        {Array.from({ length: questions }, (_, i) => i).map(
-          (_, questionIndex) => (
-            <fieldset key={questionIndex}>
-              <legend>
-                <span className="text-legend">
-                  Question {questionIndex + 1}
-                </span>
-              </legend>
+      {isQuizComplete ? (
+        <QuizComplete shortUrl={quizShortUrl} />
+      ) : (
+        <>
+          <form onSubmit={handleSubmit}>
+            {Array.from({ length: questions }, (_, i) => i).map(
+              (_, questionIndex) => (
+                <fieldset key={questionIndex}>
+                  <legend>
+                    <span className="text-legend">
+                      Question {questionIndex + 1}
+                    </span>
+                  </legend>
 
-              <div className="question-container">
-                <label htmlFor={`question${questionIndex + 1}`}>
-                  Texto da questão:
-                </label>
-                <textarea
-                  rows={8}
-                  id={`question${questionIndex + 1}`}
-                  name={`question${questionIndex + 1}`}
-                  required
-                  placeholder="Adicione sua questão"
-                />
-              </div>
-
-              <span>Marque a opção correta</span>
-              <div className="field-container">
-                {Array.from({ length: 4 }).map((_, optionIndex) => (
-                  <div
-                    className="input-container"
-                    key={`${questionIndex}-${optionIndex}`}
-                  >
-                    <input
-                      type="radio"
-                      name={`question${questionIndex + 1}-correctOption${questionIndex + 1}`}
-                      value={optionIndex}
+                  <div className="question-container">
+                    <label htmlFor={`question${questionIndex + 1}`}>
+                      Texto da questão:
+                    </label>
+                    <textarea
+                      rows={8}
+                      id={`question${questionIndex + 1}`}
+                      name={`question${questionIndex + 1}`}
                       required
+                      placeholder="Adicione sua questão"
                     />
-                    <input
-                      type="text"
-                      name={`question${questionIndex + 1}-option${optionIndex + 1}`}
-                      placeholder={`Opção ${optionIndex + 1}`}
-                      required
-                    />
-
-                    <br />
                   </div>
-                ))}
-              </div>
-            </fieldset>
-          )
-        )}
-        <Button
-          text="Salvar"
-          disabled={isLoading}
-          variant="success"
-          minWidth="200px"
-          type="submit"
-        />
-      </form>
-      <div className="Button-content">
-        <Button
-          text="Adicionar Pergunta"
-          action={handleAddQuestion}
-          disabled={questions > 9 || isLoading}
-          variant="secondary"
-          minWidth="200px"
-        />
 
-        <Button
-          text="Remover Pergunta"
-          action={handleRemoveQuestion}
-          disabled={questions === 0 || isLoading}
-          variant="primary"
-          minWidth="200px"
-        />
-      </div>
+                  <span>Marque a opção correta</span>
+                  <div className="field-container">
+                    {Array.from({ length: 4 }).map((_, optionIndex) => (
+                      <div
+                        className="input-container"
+                        key={`${questionIndex}-${optionIndex}`}
+                      >
+                        <input
+                          type="radio"
+                          name={`question${questionIndex + 1}-correctOption${questionIndex + 1}`}
+                          value={optionIndex}
+                          required
+                        />
+                        <input
+                          type="text"
+                          name={`question${questionIndex + 1}-option${optionIndex + 1}`}
+                          placeholder={`Opção ${optionIndex + 1}`}
+                          required
+                        />
+
+                        <br />
+                      </div>
+                    ))}
+                  </div>
+                </fieldset>
+              )
+            )}
+            {questions > 0 ? (
+              <Button
+                text="Salvar"
+                disabled={isLoading}
+                variant="success"
+                minWidth="200px"
+                type="submit"
+              />
+            ) : null}
+          </form>
+          <div className="Button-content">
+            <Button
+              text="Adicionar Pergunta"
+              action={handleAddQuestion}
+              disabled={questions > 9 || isLoading}
+              variant="secondary"
+              minWidth="200px"
+            />
+
+            <Button
+              text="Remover Pergunta"
+              action={handleRemoveQuestion}
+              disabled={questions === 0 || isLoading}
+              variant="primary"
+              minWidth="200px"
+            />
+          </div>
+        </>
+      )}
     </div>
   )
 }
