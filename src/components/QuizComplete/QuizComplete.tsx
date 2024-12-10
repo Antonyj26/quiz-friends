@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 export function QuizComplete({ shortUrl }: QuizCompleteProps) {
   const baseUrl = window.location.origin
 
-  const url = `${baseUrl}?quiz=${shortUrl}`
+  const url = `${baseUrl}/quiz?id=${shortUrl}`
   const { copyToClipboard } = useClipboard()
 
   async function copyUrl() {

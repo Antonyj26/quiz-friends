@@ -56,7 +56,12 @@ export function QuestionsForm() {
         questionList.push({
           text: questionText,
           correctQuestion,
-          options: [option1, option2, option3, option4],
+          options: [
+            { text: option1 },
+            { text: option2 },
+            { text: option3 },
+            { text: option4 },
+          ],
         })
       }
 

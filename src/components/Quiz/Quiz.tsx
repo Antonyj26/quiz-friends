@@ -22,7 +22,7 @@ export function Quiz({ quizData }: QuizProps) {
 
   const handleAnswerQuestion = () => {
     const newAnswer = [...answers]
-    newAnswer.push(question.correctQuestion === selectedOption)
+    newAnswer.push(Number(question.correctQuestion) === selectedOption)
     setAnswers(newAnswer)
 
     if (currentQuestion < quizData.length - 1) {
