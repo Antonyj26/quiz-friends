@@ -7,6 +7,7 @@ import type { QuestionList } from './QuestionsForm.types'
 import './QuestionsForm-styles.css'
 import { URL_ID_NUMBER_PADDING } from '../../constants'
 import { registryNewQuiz } from './request/registryNewQuiz'
+import toast from 'react-hot-toast'
 
 export function QuestionsForm() {
   const [questions, setQuestions] = useState(0)
@@ -61,8 +62,9 @@ export function QuestionsForm() {
 
       const lastRegistryId = await getLastDatabaseRegistryId()
 
+      // if (lastRegistryId === null) {
       if (lastRegistryId === null) {
-        alert('Algo de errado aconteceu') // [] TODO - Adicionar um Toast
+        toast.error('Algo de errado aconteceu')
         setIsLoading(false)
         return
       }
@@ -72,12 +74,12 @@ export function QuestionsForm() {
       const result = await registryNewQuiz(shortUrl, questionListBase64)
 
       if (!result) {
-        alert('Não foi possivel adicionar um novo quiz') // [] TODO - Adicionar um Toast
+        toast.error('Não foi possivel adicionar um novo quiz')
         setIsLoading(false)
         return
       }
 
-      alert('Quiz salvo com sucesso!') // [] TODO - Adicionar um Toast
+      toast.success('Quiz salvo com sucesso!')
       setIsLoading(false)
     },
     [questions]
